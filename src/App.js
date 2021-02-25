@@ -2,17 +2,16 @@ import React, { useState } from 'react';
 import './App.css';
 
 function App() {
-  const nayoks = ['Sharukh', 'Salman', 'Amir', 'RajniKanth']
+  const nayoks = [{ name: 'Sharukh', age: 55 }, { name: 'Salman', age: 52 }, { name: 'Amir', age: 53 }, { name: 'RajniKanth', age: 60 }]
   return (
 
     <div className="App">
 
       <header className="App-header">
         <MovieCounter></MovieCounter>
-        <Nayok name={nayoks[1]} age='55'></Nayok>
-        <Nayok name="Razzak"></Nayok>
-        <Nayok name={nayoks[3]}></Nayok>
-        <Nayok name={nayoks[0]}></Nayok>
+        {
+          nayoks.map(nk => <Nayok name={nk.name} age={nk.age}></Nayok>)
+        }
       </header>
     </div>
   );
@@ -32,7 +31,7 @@ function MovieCounter() {
   )
 }
 
-function MovieDisplay (props){
+function MovieDisplay(props) {
   return <h3>Movie I have Acted: {props.movies} </h3>
 }
 
@@ -45,7 +44,7 @@ function Nayok(props) {
   return (
     <div style={nayokStyle}>
       <h1>Ami Nayok: {props.name}</h1>
-      <h3>I have done 10 movies {props.age || 45} years</h3>
+      <h3>I have done 10 movies {props.age} years</h3>
     </div>
   )
 }
